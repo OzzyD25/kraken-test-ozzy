@@ -60,6 +60,9 @@ const Specifications = ({ product }: SpecificationsProps) => (
       />
       <Paragraph
         copy={`${product.height} x ${product.length} x ${product.width}`}
+        custom={css`
+          width: 50%;
+        `}
       />
     </StyledSpecificationRow>
 

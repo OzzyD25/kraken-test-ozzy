@@ -1,5 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import Product from "../pages/product";
+import { Provider } from "react-redux";
+import store from "../store";
 
 const mockProduct = {
   id: 1,
@@ -20,7 +22,11 @@ const mockProduct = {
 };
 
 test("should be able to increase and decrease product quantity", async () => {
-  const { getByText, getByTitle } = render(<Product product={mockProduct} />);
+  const { getByText, getByTitle } = render(
+    <Provider store={store}>
+      <Product product={mockProduct} />
+    </Provider>
+  );
 
   const increaseQuantity = getByText("+");
 
@@ -37,7 +43,11 @@ test("should be able to increase and decrease product quantity", async () => {
 });
 
 test("should be able to add items to the basket", async () => {
-  const { getByText, getByTitle } = render(<Product product={mockProduct} />);
+  const { getByText, getByTitle } = render(
+    <Provider store={store}>
+      <Product product={mockProduct} />
+    </Provider>
+  );
 
   const increaseQuantity = getByText("+");
 

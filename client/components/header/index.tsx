@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -42,7 +42,7 @@ const Header = () => {
       <StyledCartFlex>
         <StyledCartIcon />
         {cartItemCount !== 0 && (
-          <Paragraph copy={cartItemCount} title="Baseket items" />
+          <Paragraph copy={cartItemCount} title="Basket items" />
         )}
       </StyledCartFlex>
     </StyledHeader>

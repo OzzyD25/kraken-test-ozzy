@@ -10,6 +10,7 @@ import LayoutContainer from "../components/layout";
 import Paragraph from "../components/paragraph";
 import CartActions from "../components/product-page/cart-actions";
 import Specifications from "../components/product-page/specifications";
+import Header from "../components/header";
 
 const StyledProductContainer = styled.div`
   display: flex;

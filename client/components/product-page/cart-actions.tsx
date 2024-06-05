@@ -51,13 +51,7 @@ const CartActions = ({ product }: CartActionsProps) => {
   };
 
   const handleAddToCart = () => {
-    // Create an array of the same product repeated itemCount times
-    const productsToAdd = Array.from({ length: itemCount }, () => product);
-
-    // Dispatch an action for each product in the array
-    productsToAdd.forEach((productToAdd) => {
-      dispatch(addProductToCart(productToAdd));
-    });
+    dispatch(addProductToCart({ product, quantity: itemCount }));
   };
 
   return (
