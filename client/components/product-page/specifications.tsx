@@ -24,13 +24,13 @@ const Specifications = ({ product }: SpecificationsProps) => (
     <StyledSpecificationRow>
       <Paragraph
         copy="Brand"
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
       <Paragraph
         copy={product.brand}
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
@@ -39,13 +39,13 @@ const Specifications = ({ product }: SpecificationsProps) => (
     <StyledSpecificationRow>
       <Paragraph
         copy="Item weight (g)"
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
       <Paragraph
         copy={product.weight}
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
@@ -54,7 +54,7 @@ const Specifications = ({ product }: SpecificationsProps) => (
     <StyledSpecificationRow>
       <Paragraph
         copy="Dimensions (cm)"
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
@@ -66,13 +66,13 @@ const Specifications = ({ product }: SpecificationsProps) => (
     <StyledSpecificationRow>
       <Paragraph
         copy="Item Model number"
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
       <Paragraph
         copy={product.model_code}
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
@@ -81,13 +81,13 @@ const Specifications = ({ product }: SpecificationsProps) => (
     <StyledSpecificationRow>
       <Paragraph
         copy="Colour"
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />
       <Paragraph
         copy={product.colour}
-        customStyles={css`
+        custom={css`
           width: 50%;
         `}
       />

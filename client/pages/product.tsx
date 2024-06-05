@@ -73,7 +73,7 @@ export default function Product({ product }: ProductProps) {
             <h1>{product.name}</h1>
             <Paragraph
               copy={`${product.power} // Packet of 4`}
-              customStyles={css`
+              custom={css`
                 color: var(--purpleHaze);
               `}
             />

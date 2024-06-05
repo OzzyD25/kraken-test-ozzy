@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -24,19 +24,27 @@ const StyledCartIcon = styled(CartIcon)`
   width: 24px;
 `;
 
+const StyledCartFlex = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+const selectCartItemsCount = (state: RootState) =>
+  state.cart.cartProducts.length;
+
 const Header = () => {
-  // const cartProducts = useSelector(
-  //   (state: RootState) => state.cart.cartProducts
-  // );
+  const cartItemCount = useSelector(selectCartItemsCount);
 
   return (
     <StyledHeader>
       <StyledOctopusLogo />
 
-      <div>
+      <StyledCartFlex>
         <StyledCartIcon />
-        <Paragraph copy={"0"} title="Baseket items" />
-      </div>
+        {cartItemCount !== 0 && (
+          <Paragraph copy={cartItemCount} title="Baseket items" />
+        )}
+      </StyledCartFlex>
     </StyledHeader>
   );
 };

@@ -3,30 +3,25 @@ import styled, { css, CSSProp } from "styled-components";
 
 interface ParagraphProps {
   copy: string | number;
-  customStyles?: CSSProp;
+  custom?: CSSProp;
   fontSize?: string;
   title?: string;
 }
 
-const StyledParagraph = styled.p<{ customStyles?: CSSProp; fontSize: string }>`
+const StyledParagraph = styled.p<{ custom?: CSSProp; fontSize: string }>`
   line-height: 1.5;
   font-size: ${({ fontSize }) => fontSize};
-  ${({ customStyles }) => customStyles};
+  ${({ custom }) => custom};
 `;
 
 const Paragraph = ({
   copy,
-  customStyles = css``,
+  custom = css``,
   fontSize = "14px",
   title,
   ...props
 }: ParagraphProps) => (
-  <StyledParagraph
-    customStyles={customStyles}
-    fontSize={fontSize}
-    title={title}
-    {...props}
-  >
+  <StyledParagraph custom={custom} fontSize={fontSize} title={title} {...props}>
     {copy}
   </StyledParagraph>
 );
