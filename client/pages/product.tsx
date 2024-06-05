@@ -71,7 +71,12 @@ export default function Product({ product }: ProductProps) {
         <StyledProductInformation>
           <StyledProductTitle>
             <h1>{product.name}</h1>
-            <Paragraph faded copy={`${product.power} // Packet of 4`} />
+            <Paragraph
+              copy={`${product.power} // Packet of 4`}
+              customStyles={css`
+                color: var(--purpleHaze);
+              `}
+            />
           </StyledProductTitle>
 
           <CartActions product={product} />

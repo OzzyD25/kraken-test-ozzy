@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 // type
 import { IProduct } from "../../interfaces";
@@ -8,6 +9,9 @@ import { CartButtonActions } from "../../enum";
 // component
 import Paragraph from "../paragraph";
 import Button from "../button";
+
+// slice
+import { addProductToCart } from "../../store/slices/cartSlice";
 
 interface CartActionsProps {
   product: IProduct;
@@ -36,6 +40,7 @@ const StyledAddButton = styled(Button)`
 
 const CartActions = ({ product }: CartActionsProps) => {
   const [itemCount, setItemCount] = useState<number>(1);
+  const dispatch = useDispatch();
 
   const handleAmountToggle = (action: string) => {
     if (action === CartButtonActions.INCREASE)
@@ -43,6 +48,15 @@ const CartActions = ({ product }: CartActionsProps) => {
 
     if (action === CartButtonActions.DEACREASE && itemCount !== 1)
       setItemCount((prevState) => prevState - 1);
+  };
+
+  const handleAddToCart = () => {
+    const productWithQuantity = {
+      ...product,
+      quantity: itemCount,
+    };
+
+    dispatch(addProductToCart(productWithQuantity));
   };
 
   return (
@@ -62,7 +76,7 @@ const CartActions = ({ product }: CartActionsProps) => {
 
           <StyledProductQty>
             <Paragraph copy="Qty" fontSize="12px" />
-            <Paragraph copy={itemCount} />
+            <Paragraph title="Current quantity" copy={itemCount} />
           </StyledProductQty>
 
           <Button
@@ -76,7 +90,7 @@ const CartActions = ({ product }: CartActionsProps) => {
       <StyledAddButton
         copy={CartButtonActions.ADD_TO_CART}
         width="100%"
-        onClick={() => console.log("add to cart")}
+        onClick={handleAddToCart}
       />
     </StyledCartActionsContainer>
   );

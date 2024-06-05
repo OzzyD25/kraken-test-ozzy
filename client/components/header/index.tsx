@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+
+// store
+import { RootState } from "../../store";
+
+// components
 import OctopusLogo from "../svg/octopus-logo";
 import CartIcon from "../svg/cart-icon";
+import Paragraph from "../paragraph";
 
 const StyledHeader = styled.header`
   justify-content: space-between;
@@ -17,12 +24,21 @@ const StyledCartIcon = styled(CartIcon)`
   width: 24px;
 `;
 
-const Header = () => (
-  <StyledHeader>
-    <StyledOctopusLogo />
+const Header = () => {
+  // const cartProducts = useSelector(
+  //   (state: RootState) => state.cart.cartProducts
+  // );
 
-    <StyledCartIcon />
-  </StyledHeader>
-);
+  return (
+    <StyledHeader>
+      <StyledOctopusLogo />
+
+      <div>
+        <StyledCartIcon />
+        <Paragraph copy={"0"} title="Baseket items" />
+      </div>
+    </StyledHeader>
+  );
+};
 
 export default Header;

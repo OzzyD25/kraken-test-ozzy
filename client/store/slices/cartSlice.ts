@@ -18,17 +18,12 @@ const cartSlice = createSlice({
     toggleCart(state) {
       state.cartOpen = !state.cartOpen;
     },
-    addProduct(state, action: PayloadAction<IProduct>) {
+    addProductToCart(state, action: PayloadAction<IProduct>) {
       state.cartProducts.push(action.payload);
-    },
-    removeProduct(state, action: PayloadAction<number>) {
-      state.cartProducts = state.cartProducts.filter(
-        (product) => product.id !== action.payload
-      );
     },
   },
 });
 
-export const { toggleCart, addProduct, removeProduct } = cartSlice.actions;
+export const { toggleCart, addProductToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
