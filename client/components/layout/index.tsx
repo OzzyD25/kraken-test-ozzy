@@ -1,14 +1,29 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
-import { Header } from "../header";
+
+// components
+import Header from "../header";
+import Footer from "../footer";
+
+interface LayoutContainerProps {
+  children: ReactNode;
+}
 
 const StyledLayoutContainer = styled.div`
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 `;
 
-export const LayoutContainer = ({ children }) => (
+const LayoutContainer = ({ children }: LayoutContainerProps) => (
   <StyledLayoutContainer>
     <Header />
 
     {children}
+
+    <Footer />
   </StyledLayoutContainer>
 );
+
+export default LayoutContainer;

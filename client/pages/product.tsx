@@ -1,25 +1,61 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import styled from "styled-components";
-import { LayoutContainer } from "../components/layout";
+import styled, { css } from "styled-components";
+
+// type
 import { IProduct } from "../interfaces";
+
+// components
+import LayoutContainer from "../components/layout";
+import Paragraph from "../components/paragraph";
+import CartActions from "../components/product-page/cart-actions";
+import Specifications from "../components/product-page/specifications";
 
 const StyledProductContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
-const StyledProductInformation = styled.div``;
+const StyledProductInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 1024px) {
+    max-width: 550px;
+  }
+`;
 
 const StyledProductImage = styled.img`
   border-radius: 10px;
+  max-height: 400px;
+  max-width: 340px;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    max-height: 600px;
+    max-width: 508px;
+  }
 `;
 
-const StyledButton = styled.button`
-  background: #f050f8;
-  color: #180048;
-  border: 0px;
-  cursor: pointer;
+const StyledProductTitle = styled.div`
+  padding: 16px;
+`;
+
+const StyledProductDescription = styled.div`
+  padding: 16px;
+
+  @media (max-width: 1023px) {
+    background: ${css`var(--hemocyanin)`};
+  }
 `;
 
 interface ProductProps {
@@ -33,28 +69,19 @@ export default function Product({ product }: ProductProps) {
         <StyledProductImage src={product.img_url} />
 
         <StyledProductInformation>
-          <div>
+          <StyledProductTitle>
             <h1>{product.name}</h1>
-            <p>{`${product.power} // Packet of 4`}</p>
-          </div>
+            <Paragraph faded copy={`${product.power} // Packet of 4`} />
+          </StyledProductTitle>
 
-          <div>
-            <p>{`£${product.price}`}</p>
-            <StyledButton>-</StyledButton>
-            <StyledButton>+</StyledButton>
-            <StyledButton>Add to cart</StyledButton>
+          <CartActions product={product} />
 
-            <button>hello</button>
-          </div>
-
-          <div>
+          <StyledProductDescription>
             <h2>Description</h2>
-            <p>{product.description}</p>
-          </div>
+            <Paragraph copy={product.description} />
+          </StyledProductDescription>
 
-          <div>
-            <h2>Specifications</h2>
-          </div>
+          <Specifications product={product} />
         </StyledProductInformation>
       </StyledProductContainer>
     </LayoutContainer>

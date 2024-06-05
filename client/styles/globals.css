@@ -20,6 +20,21 @@ body {
   background: var(--siphon);
 }
 
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
 .home {
   display: flex;
   flex-direction: column;
