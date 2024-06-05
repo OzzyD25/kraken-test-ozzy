@@ -68,7 +68,7 @@ const Specifications = ({ product }: SpecificationsProps) => (
 
     <StyledSpecificationRow>
       <Paragraph
-        copy="Item Model number"
+        copy="Item model number"
         custom={css`
           width: 50%;
         `}
