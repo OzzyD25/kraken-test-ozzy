@@ -6,6 +6,10 @@ import { IProduct } from "../../interfaces";
 interface SpecificationsProps {
   product: IProduct;
 }
+interface SpecificationItem {
+  label: string;
+  value: string | number;
+}
 
 const StyledSpecificationsContainer = styled.div`
   padding: 16px;
@@ -17,84 +21,39 @@ const StyledSpecificationRow = styled.div`
   margin-bottom: 16px;
 `;
 
+const SpecificationItem = ({ label, value }: SpecificationItem) => (
+  <StyledSpecificationRow>
+    <Paragraph
+      copy={label}
+      custom={css`
+        width: 50%;
+      `}
+    />
+    <Paragraph
+      copy={value}
+      custom={css`
+        width: 50%;
+      `}
+    />
+  </StyledSpecificationRow>
+);
+
 const Specifications = ({ product }: SpecificationsProps) => (
   <StyledSpecificationsContainer>
     <h2>Specifications</h2>
 
-    <StyledSpecificationRow>
-      <Paragraph
-        copy="Brand"
-        custom={css`
-          width: 50%;
-        `}
-      />
-      <Paragraph
-        copy={product.brand}
-        custom={css`
-          width: 50%;
-        `}
-      />
-    </StyledSpecificationRow>
+    <SpecificationItem label="Brand" value={product.brand} />
 
-    <StyledSpecificationRow>
-      <Paragraph
-        copy="Item weight (g)"
-        custom={css`
-          width: 50%;
-        `}
-      />
-      <Paragraph
-        copy={product.weight}
-        custom={css`
-          width: 50%;
-        `}
-      />
-    </StyledSpecificationRow>
+    <SpecificationItem label="Item weight (g)" value={product.weight} />
 
-    <StyledSpecificationRow>
-      <Paragraph
-        copy="Dimensions (cm)"
-        custom={css`
-          width: 50%;
-        `}
-      />
-      <Paragraph
-        copy={`${product.height} x ${product.length} x ${product.width}`}
-        custom={css`
-          width: 50%;
-        `}
-      />
-    </StyledSpecificationRow>
+    <SpecificationItem
+      label="Dimensions (cm)"
+      value={`${product.height} x ${product.length} x ${product.width}`}
+    />
 
-    <StyledSpecificationRow>
-      <Paragraph
-        copy="Item model number"
-        custom={css`
-          width: 50%;
-        `}
-      />
-      <Paragraph
-        copy={product.model_code}
-        custom={css`
-          width: 50%;
-        `}
-      />
-    </StyledSpecificationRow>
+    <SpecificationItem label="Item model number" value={product.model_code} />
 
-    <StyledSpecificationRow>
-      <Paragraph
-        copy="Colour"
-        custom={css`
-          width: 50%;
-        `}
-      />
-      <Paragraph
-        copy={product.colour}
-        custom={css`
-          width: 50%;
-        `}
-      />
-    </StyledSpecificationRow>
+    <SpecificationItem label="Colour" value={product.colour} />
   </StyledSpecificationsContainer>
 );
 
